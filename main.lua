@@ -25,7 +25,7 @@ function love.load(args)
     slab.SetINIStatePath(nil)
     slab.Initialize(args)
 
-    currentProject = ""
+    projectROOT = args[2] or "Projects/teste"
 
     -- addons loader --
     Addons = love.filesystem.getDirectoryItems("libraries/addons")
@@ -42,11 +42,11 @@ function love.load(args)
         require("src.States." .. string.gsub(States[state], ".lua", ""))
     end
 
-    -- every argument passed to the game will direct to console
-    if #args > 0 then
-        loveconsole:run(table.concat(args, " "))
-    end
-
+    --% Some engine resources %--
+    love.graphics.setNewFont("resources/fonts/quicksand-regular.ttf", 15)
+    slab.PushFont(love.graphics.newFont("resources/fonts/quicksand-regular.ttf", 15))
+    iconsSheet, iconQuads = love.graphics.getQuads("resources/images/explorer")
+    iconsJsonData = json.decode(love.filesystem.read("resources/images/explorer.json"))
 
     --% Create folders %--
     love.filesystem.createDirectory("Projects")

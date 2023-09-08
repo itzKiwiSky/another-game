@@ -13,7 +13,7 @@ end
 
 function editorstate:update(elapsed)
     slab.Update(elapsed)
-    properties()
+    --properties()
     assetsExplorer()
     menubar()
 end
