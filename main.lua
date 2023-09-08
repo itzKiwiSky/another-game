@@ -52,5 +52,5 @@ function love.load(args)
     love.filesystem.createDirectory("Projects")
 
     gamestate.registerEvents()
-    gamestate.switch(editorstate)
+    gamestate.switch(sceneeditorstate)
 end
